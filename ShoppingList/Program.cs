@@ -1,12 +1,16 @@
 ﻿using System;
 
-namespace ShoppingList
+namespace ShoppingCartApp
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ShoppingCart shoppingCart = new ShoppingCartItem();
+
+
+
+            Console.WriteLine();
         }
     }
 }
