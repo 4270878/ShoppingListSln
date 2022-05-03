@@ -6,22 +6,60 @@ namespace ShoppingLibraries
 
     public class ShoppingCart 
     {
-        protected int _productID;
+        
         protected string _productName;
-        protected int _quantity;
         protected double _price;
         protected double _subTotal;
 
 
         public ShoppingCart(int ProductID, string ProductName,
-             int Quantity, double Price)
+              double Price)
         {
-            _productID = ProductID;
+            
             _productName = ProductName;
-            _quantity = Quantity;
             _price = Price;
-            _subTotal = Quantity * Price;
+            _subTotal = 0.15 * Price;
 
+        }
+
+        private List<ShoppingCartItem> _items = new List<ShoppingCartItem>();
+
+        public ShoppingCart() { }
+        public void ShoppingCartItem(ShoppingCartItem item)
+        {
+            _items.Add(item);
+        }
+
+        public List<ShoppingCartItem> CartList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ShoppingCartItem> shoppingCart()
+        {
+            return _items;
+        }
+
+        public double SubTotal()
+        {
+            double total = 0;
+            foreach (ShoppingCartItem item in _items)
+            {
+                total += item.Price;
+            }
+            return Math.Round(total, 2);
+        }
+
+        public double SubTotalVat()
+        {
+            double totalWithVat = 0;
+            totalWithVat = SubTotal() + SubTotal() * 0.15;
+            return Math.Round(totalWithVat, 2);
+        }
+/*
+        public void ShoppingCartItem(ShoppingCartItem item)
+        {
+            throw new NotImplementedException();
         }
 
         private DateTime _dateCreated;
@@ -79,6 +117,8 @@ namespace ShoppingLibraries
             _lastUpdate = DateTime.Now;
         }
 
+
+
         public void DeleteItem(int rowID)
         {
             _items.RemoveAt(rowID);
@@ -105,8 +145,9 @@ namespace ShoppingLibraries
                 total += Item.Price;
             }
             return Math.Abs(total);
+*/
         }
-
+        
    
    
 }

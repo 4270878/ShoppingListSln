@@ -9,9 +9,7 @@ namespace ShoppingLibraries
     public class ShoppingCartItem 
 
     {
-        protected int _productID;
         protected string _productName;
-        protected int _quantity;
         protected double _price;
         protected double _subTotal;
 
@@ -19,42 +17,28 @@ namespace ShoppingLibraries
         public ShoppingCartItem(int ProductID, string ProductName,
              int Quantity, double Price)
         {
-            _productID = ProductID;
             _productName = ProductName;
-            _quantity = Quantity;
             _price = Price;
-            _subTotal = Quantity * Price;
+            _subTotal = 0.15 * Price;
 
         }
-        public int ProductID
+
+        public ShoppingCartItem(string productName, double price)
         {
-            get
-            {
-                return _productID;
-            }
-            set
-            {
-                _productID = value;
-            }
+            this._productName = productName;
+            this._price = price;
         }
-
         public string ProductName
         {
             get { return _productName; }
             set { _productName = value; }
         }
 
-        public int Quantity
-        {
-            get { return _quantity; }
-            set { _quantity = value; }
-        }
-
         public static explicit operator ShoppingCartItem(ShoppingCart v)
         {
             throw new NotImplementedException();
         }
-
+     
         public double Price
         {
             get { return _price; }
@@ -63,7 +47,7 @@ namespace ShoppingLibraries
 
         public double SubTotal
         {
-            get { return _quantity * _price; }
+            get { return 0.15 * _price; }
         }
 
     }
